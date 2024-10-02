@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+        body {
+            font-family: "Bebas Neue", sans-serif;
+            background-image: linear-gradient(280deg, #171e17 0, #161e18 3.33%, #141f19 6.67%, #131f1a 10%, #121f1c 13.33%, #111f1d 16.67%, #111f1e 20%, #101f1f 23.33%, #101f20 26.67%, #101f21 30%, #111e22 33.33%, #111e23 36.67%, #121e24 40%, #131e24 43.33%, #151d25 46.67%, #161d25 50%, #181d25 53.33%, #191c25 56.67%, #1b1c25 60%, #1c1b24 63.33%, #1e1b24 66.67%, #1f1b23 70%, #211a22 73.33%, #221a21 76.67%, #231a20 80%, #24191f 83.33%, #24191e 86.67%, #25191c 90%, #25191b 93.33%, #25191a 96.67%, #251919 100%);
+            justify-content: center; 
+            align-items: center;   
+            height: 100vh; 
+        }
+        .main-content {
+            text-align: center;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        .container {
+            margin: 0 auto;
+            justify-content: center; 
+            align-items: center;   
+  
+        }
+        section {
+            height: 100vh;
+            scroll-snap-align: center;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.5s ease-in-out;
+        }
+        .header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            position: relative;
+            height: 100vh; 
+            overflow: hidden;
+        }
+        .header i {
+            color: #ffffff;
+            margin-right: 25px;
+            font-size: 22px;
+        }
+        img {
+            max-width: 100%;
+        }
+        .back-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            z-index: -1;
+        }
+        .menu {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        .logo {
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .menu .navbar ul li {
+            position: relative;
+            float: left;
+        }
+        .menu .navbar ul li a {
+            font-size: 18px;
+            color: rgb(255, 255, 255);
+            display: block;
+            font-weight: 600;
+            padding: 20px;
+        }
+        .menu .navbar ul li a:hover {
+            color: #c7ab78;
+        }
+        #menu {
+            display: none;
+        }
+        .menu-icono {
+            width: 25px;
+        }
+        .menu label {
+            cursor: pointer;
+            display: none;
+        }
+
+
+
+        .header-txt {
+            z-index: 1; 
+            position: absolute;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .header-txt h1 {
+            color: #ffffff;
+            font-size: 160px;
+            line-height: 80px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .header-txt span {
+            color: #000000;
+        }
+        .header-txt p {
+            font-size: 16px;
+            color: #ffffff;
+            padding: 0 200px;
+            margin-bottom: 25px;
+        }
+        .buttons {
+
+            margin-top: 10px;
+            display: flex;
+            text-align: center;
+            justify-content: flex-end; 
+            width: 100%;
+        }
+        .buttons1 {
+            margin-top: 20px;
+            display: flex;
+            text-align: center;
+            justify-content: center; 
+            width: 100%;
+        }
+        .btn-1 {
+            display: inline-block;
+            background-color: #2f3b4b;
+            padding: 13px 25px;
+            width: 150px;
+            margin: 0 10px;
+            border-radius: 25px;
+            color: #FFFFFF;
+        }
+        .btn-1:hover {
+            background-color: #334f6e;
+        }
+
+        .biblio {
+            position: relative; 
+            background-image: url(https://www.dropbox.com/scl/fi/mknwa5p3en2342g53fuv0/l1.jpeg?rlkey=co9kck6ru2kfd73z224xtsnih&st=pwldk9b6&raw=1);
+            background-size: cover;
+            opacity: 0.9;
+            background-position: center;
+            border-radius: 40px;
+            background-color: rgba(243, 243, 243, 0.1);
+            padding: 30px 30px;
+            margin: 70px;
+            overflow: hidden; 
+        }
+
+        .biblio::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 40px; 
+            z-index: 1; 
+        }
+
+        .biblio > * {
+            position: relative; 
+            z-index: 2; 
+        }
+        .biblio2 {
+            position: relative; 
+            background-image: url(https://www.dropbox.com/scl/fi/5dwdoix7s6likmc3142c3/l2.jpg?rlkey=l2aj35nfu2ovnxvb5oxn0aq32&st=z47mb6kh&raw=1);
+            background-size: cover;
+            opacity: 0.9;
+            background-position: center;
+            border-radius: 40px;
+            background-color: rgba(243, 243, 243, 0.1);
+            padding: 30px 30px;
+            margin: 70px;
+            overflow: hidden; 
+        }
+
+        .biblio2::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 40px; 
+            z-index: 1; 
+        }
+
+        .biblio2 > * {
+            position: relative; 
+            z-index: 2; 
+        }
+
+        .biblio-content {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            width: 80%;
+            height: 70%;
+
+        }
+        .biblio-txt {
+            flex-basis: 50%;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            overflow-y: auto; 
+            height: 70%; 
+            width: 80%;
+        }
+        .biblio2-txt {
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            overflow-y: auto;
+            margin-left: 15px;
+            margin-right: 5px; 
+            height: 80%; 
+            width: 50%;
+        }
+        span {
+            font-size: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+        h2 {
+            text-align: center;
+            font-size: 45px;
+            color: #FFFFFF;
+            margin: 15px 0;
+            line-height: 1;
+        }
+        hr {
+            border: 1px solid #816f74;
+            width: 10%;
+            margin-bottom: 30px;
+
+        }
+        .biblio-img {
+            width: 100%;
+            height: 70%;
+            text-align: center; 
+            box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.9);
+        }
+        .biblio-img img {
+            width: 100%;
+        }
+        .video {
+            width: 100%;
+            height: 100%;
+        }
+        .pagina {
+            width: 100%;
+            height: 500px;
+        }
+        .pagina2 {
+            width: 100%;
+            height: 400px;
+        }
+        .bibliopagina {
+            width: 100%;
+            height: 100%;
+        }
+        .services-content {
+            
+            display: flex;
+            width: 100%;
+            height: 70%;
+            align-items: center;
+            justify-content: center;
+        }
+        .services {
+            position: relative; 
+            background-image: url(https://www.dropbox.com/scl/fi/v4jjvqps9ao9p0x42kdt1/l5.jpg?rlkey=wium7kl87jczfv5ocffzhp63d&st=ew3dyz61&raw=1);
+            background-size: cover;
+            opacity: 0.9;
+            background-position: center;
+            border-radius: 40px;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 30px 30px;
+            margin: 70px;
+            overflow: hidden; 
+        }
+
+        .services::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 40px; 
+            z-index: 1; 
+        }
+
+        .services > * {
+            position: relative; 
+            z-index: 2; 
+        }
+
+        .service {
+            width: 100%;
+            height: 80%;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .service iframe {
+            height: 100%; 
+            flex-grow: 1; 
+        
+        }
+        .service img {
+            width: 50px;
+            height: 50px;
+        }
+        .service h3 {
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 25px;
+            color: #ffffff;
+        }
+
+
+
+        .extra {
+            position: relative; 
+            background-image: url(https://www.dropbox.com/scl/fi/arsix5c2myzp3okj8r1is/l3.jpg?rlkey=8kgip852j3l7bg8jdyfrpyfjv&st=ew4venm3&raw=1);
+            background-size: cover;
+            opacity: 0.9;
+            background-position: center;
+            border-radius: 40px;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 30px 30px;
+            margin: 70px;
+            overflow: hidden; 
+        }
+
+        .extra::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 40px; 
+            z-index: 1; 
+        }
+
+        .extra > * {
+            position: relative; 
+            z-index: 2; 
+        }
+        .extra2 {
+            position: relative; 
+            background-image: url(https://www.dropbox.com/scl/fi/myrjye661s3kda6ff11bh/l4.jpg?rlkey=c8sdgb4854dpggi9qgs8ngj2n&st=pazd1gah&raw=1);
+            background-size: cover;
+            opacity: 0.9;
+            background-position: center;
+            border-radius: 40px;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 30px 30px;
+            margin: 70px;
+            overflow: hidden; 
+        }
+
+        .extra2::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 40px; 
+            z-index: 1; 
+        }
+
+        .extra2 > * {
+            position: relative; 
+            z-index: 2; 
+        }
+        .extra-content {
+            display: flex;
+            width: 100%;
+            height: 80%;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .extra-1 {
+            width: 80%;
+            height: 100%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin-right: 10px;
+            margin-left: 10px;
+            position: relative;
+            
+        }
+        .pagina2 {
+            width: 100%;
+            height: 100%;
+        }
+        .extra-2 {
+            width: 500px;
+            height: 550px;
+            padding: 20px;
+            flex-basis: 70%;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 70px;
+            overflow-y: auto; 
+            height: 400px; 
+            width: 80%;
+        }
+        .extra-1  h4 {
+            color: #FFFFFF;
+            font-size: 25px;
+        }
+        .extra-2  h4 {
+            color: #FFFFFF;
+            font-size: 25px;
+        }
+        .extra-3 {
+            width: 80%;
+            height: 100%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin-right: 10px;
+            margin-left: 10px;
+            position: relative;
+        }
+        .pagina3 {
+            width: 100%;
+            height: 100%;
+        }
+
+
+
+
+        footer {
+            background-color: #111113;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            height: 50px;
+            bottom: 0;
+            font-size: 13px;
+        }
+        .style1 {
+            font-size: 20px;
+            margin-left: 4%;
+            margin-right: 4%;
+        }
+        .style1 a {
+            color: rgb(255, 255, 255);
+        }
+        footer nav {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        
+
+        .video-carousel {
+            width: 600%;
+            display: flex;
+            animation: slide 60s infinite;
+        }
+
+        .carousel-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; 
+        }
+
+        @keyframes slide {
+            0% { margin-left: 202%; }     
+            33% { margin-left: 202%; }  
+            
+            35% { margin-left: 0; }  
+            66% { margin-left: 0; } 
+            
+            68% { margin-left: -202%; } 
+            100% { margin-left: -202%; }   
+        }
+
+
+
+        @media(max-width:991px){
+
+            .menu {
+                padding: 20px;
+            }
+            .menu label {
+                display: initial;
+            }
+            .menu .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #24272E;
+                display: none;
+            }
+            .menu .navbar ul li {
+                width: 100%;
+            }
+            #menu:checked ~ .navbar {
+                display: initial;
+            }
+            .header {
+                padding: 50px 30px;
+            }
+            .header i {
+                margin-right: 0px;
+                margin-left: 20px;
+            }
+            .header-txt {
+                text-align: center;
+                padding: 0;
+            }
+            .header-txt p {
+                padding: 0;
+            }
+            .buttons{
+                justify-content: center;
+            }
+            p {
+                font-size: 15px;
+                color: #ffffff;
+            }
+            .biblio2 {
+                margin: 20px;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .biblio-img {
+                width: 100%;
+                height: 100%;
+            }
+            hr {
+                display: none;
+            }
+            .biblio {
+                margin: 20px;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .biblio-content {
+                top: 0;
+                left: 1%;
+                right: 1%;
+                bottom: 0;
+                width: 100%;
+                height: 80%;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+
+
+            .bibliopagina {
+                margin-left: 0;
+                margin-right: 0;
+                width: 95%;
+                height: 100%;
+            }
+            .biblio-txt {
+                height: 300px;
+                margin-bottom: 5%;
+            }
+            .biblio2-txt {
+                width: 80%;
+                margin-top: 2%;
+            }
+            .services{
+                margin: 20px;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .service {
+                width: 100%;
+                height: 100%;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+            .service iframe {
+                width: 100%;
+                height: 100%; 
+                flex-grow: 1; 
+            }
+
+            .services-content {
+                display: flex;               /* Activa el modelo de flexbox */
+                flex-direction: column;      /* Organiza los hijos en columna */
+                justify-content: center;     /* Centra los hijos verticalmente */
+                align-items: center;  
+                height: 80%;                /* Asegúrate de que el contenedor tenga altura */
+                text-align: center;          /* Centra el texto */
+            }
+            .services h2 {
+                margin-top: 1%;
+                margin-bottom: 0;
+            }
+            
+            .extra {
+                margin: 20px;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .extra2 {
+                margin: 20px;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .extra-content {
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 80%;
+                flex-direction: column;
+                position: relative; 
+                margin: 0;
+                padding: 0;
+            }
+            .extra-1 {
+                width: 100%;
+                height: 900px;
+            }
+            .extra-2 {
+                margin-top: 1%;
+                width: 80%;
+                height: 20px;
+                margin-bottom: 0;
+                margin: 0;
+                padding: 0;
+            }
+            .pagina {
+                width: 100%; 
+                height: 100%; 
+                box-sizing: border-box;
+            }
+            .pagina2 {
+                margin-top: 0;
+                width: 100%;
+                height: 500px;
+                margin-bottom: 0;
+            }
+            .extra-3 {
+                width: 100%;
+                height: 900px;
+            }
+            .pagina3 {
+                margin-top: 0;
+                width: 100%;
+                height: 100%;
+                margin-bottom: 0;
+            }
+
+            form {
+                width: 100%;
+            }
+            input {
+                width: 1005;
+            }
+            .footer {
+                padding: 10px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+
+            @keyframes slide {
+                0% { margin-left: 232%; }     
+                33% { margin-left: 232%; }  
+                
+                35% { margin-left: 0; }  
+                66% { margin-left: 0; } 
+                
+                68% { margin-left: -232%; } 
+                100% { margin-left: -232%; }   
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <header class="header" id="HOME">
+        <div class="video-carousel">
+            <video class="carousel-video" autoplay muted loop>
+                <source src="https://www.dropbox.com/scl/fi/90p3aye2enybsrz44nnbn/tarde-lejos-lagos.mp4?rlkey=wz4bywtb6ozc6rauvfque2hyo&st=iy08m04l&raw=1" type="video/mp4">
+            </video>
+            <video class="carousel-video" autoplay muted loop>
+                <source src="https://www.dropbox.com/scl/fi/alql5masmy1ykpqroz02j/blanco-y-negro-lagos.mp4?rlkey=qtc8hmda3o4uf7itxwwyp3fs9&st=54h82r4j&raw=1" type="video/mp4">
+            </video>
+            <video class="carousel-video" autoplay muted loop>
+                <source src="https://www.dropbox.com/scl/fi/jnveqkha1g2gxzhn4xv9b/M-naco.mp4?rlkey=094nh02brb08ivrs4yl41v8h9&st=ssp1tjei&raw=1" type="video/mp4">
+            </video>
+        </div>        
+        <div class="menu container">
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="https://www.dropbox.com/scl/fi/1km8b37pe8co3z5z6ivdw/menu.png?rlkey=s96gxsyjx3k47b2p2ce6x6y34&st=vgmhoftp&raw=1" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#bibliografia">BIBLIOGRAFIA</a></li>
+                    <li><a href="#musicas">MUSICAS</a></li>
+                    <li><a href="#tour">TOUR</a></li>
+                    <li><a href="#planificador">Planificador de eventos</a></li>
+                    <li><a href="#comenta">Comenta</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <a href="https://www.facebook.com/LagosFacebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/lagosmusica/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/LagosMusica" target="_blank"><i class="fab fa-twitter"></i></a>
+            </nav>            
+        </div>
+
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>LAGOS</h1>
+                <p>
+                    LAGOS Oficial. La banda que está revolucionando la música latina. 
+                    ¡Únete a nuestra comunidad y vive la experiencia LAGOS al máximo! 
+                </p>
+                
+            </div>
+        </div>
+    </header>
+
+    <section class="biblio container" id="bibliografia">
+        <h2>Sobre lagos</h2>
+        <div class="biblio-content container">
+            <div class="biblio-txt">
+                <span>BIBLIOGRAFIA</span>
+                <hr>
+                <p>
+                    LAGOS es un dúo venezolano conformado por Luis Jiménez y Agustín Zubillaga. 
+                    Con una trayectoria de más de una década en la industria musical, 
+                    han pasado de ser productores a convertirse en artistas reconocidos a nivel internacional. 
+                    Su álbum debut, "Clásicos", los ha posicionado como una de las promesas más sólidas del pop 
+                    latino actual. Han colaborado con destacados artistas y obtenido un Latin Grammy por su canción 
+                    "Ojos Marrones". Para conocer más sobre su música y proyectos, puedes visitar sus perfiles 
+                    en plataformas digitales como Spotify y YouTube.
+                    LAGOS es un dueto venezolano formado en 2018 por Luis Jiménez y 
+                    Agustín Zubillaga que han sido a lo largo de más de 10 años productores, 
+                    compositores, músicos para muchos personajes en la industria musical y ahora 
+                    co-directores de sus propios videos.
+                </p>
+            </div>
+            <div class="biblio-img">
+                <iframe class="video" src="https://www.youtube.com/embed/XWLk8S50apA?autoplay=1" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="buttons">
+            <a href="#HOME" class="btn-1">INICIO</a>
+        </div>
+    </section>
+
+
+    <section class="services container" id="musicas">
+        <h2>musicas</h2>
+        <div class="services-content">
+            <div class="service">
+                <p>ALBUM LAGOS ALTA FIDELIDAD</p>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4WvqFh9NACDqIR7F6I5PB7?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>     
+            </div>
+            <div class="service">
+                <p>ALBUM LAGOS CLASICOS</p>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/0t8H6Wc8P63LO0zj7kwZuj?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div class="buttons">
+            <a href="#HOME" class="btn-1">INICIO</a>
+        </div>
+    </section>
+    
+    <section class="biblio2 container" id="tour">
+        <h2>TOUR</h2>
+        <div class="biblio-content container">
+            <div class="bibliopagina">
+                <iframe class="pagina2" src="https://www.salarazzmatazz.com/05-11-2024/lagos-alta-fidelidad-tour-24" allowfullscreen></iframe>
+            </div>
+            <div class="biblio2-txt">
+                <p>
+                    ¡Los Mesoneros y LAGOS juntos en un mismo escenario!
+                    No te pierdas la oportunidad de vivir una noche inolvidable con tus artistas favoritos. ¡Compra tus entradas ahora y sé parte de esta experiencia única!
+                    ¡Últimas entradas disponibles!
+                    ¡Haz clic en la imagen para comprar y asegurar tu lugar!
+                </p>
+            </div>
+        </div>
+        <div class="buttons">
+            <a href="#HOME" class="btn-1">INICIO</a>
+        </div>
+    </section>
+    <section class="extra container" id="planificador">
+        <h2>PLANIFICADOR DE EVENTOS</h2>
+        <div class="extra-content container">
+
+            <div class="extra-1">
+                    <iframe class="pagina2" src="https://noa7910.github.io/calculadora/calculadora_hector_4.0.html" allowfullscreen></iframe>
+            </div>
+            <div class="extra-2">
+                <h4>Calcula tu presupuesto</h4>
+                <p>
+                    Se creo una nueva calculadora para cotizaciones de conciertos de LAGOS, 
+                    ¡Explora todas las opciones disponibles para planificar tu experiencia musical
+                </p>
+                <div class="buttons1"></div>
+                    <a href="https://drive.google.com/uc?export=download&id=1sJHLXqEu2ZmP_pVS7QHgfmbVB0xnZfvZ" download class="btn-1" target="_blank">DESCARGA AQUI</a>
+                </div>
+            </div>
+            <div class="buttons">
+                <a href="#HOME" class="btn-1">INICIO</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="extra2 container" id="comenta">
+        <h2>COMENTA</h2>
+        <div class="extra-content container">
+            <div class="extra-2">
+                <h4>Anota tu participacion</h4>
+                <p>
+                    Puedes comentar y registrar tu asistencia al concierto de LAGOS en nuestra 
+                    página dedicada. Simplemente elige la fecha del evento y confirma si asistirás. 
+                    ¡Nos encantaría conocer tu opinión!
+                </p>
+                <div class="buttons1">
+                    <a href="https://drive.google.com/uc?export=download&id=1IdGVUPwE7qASo3fPIqpUMz0b4-ROBfoI" target="_blank" class="btn-1">DESCARGAR ITINERARIO</a>
+                </div>
+            </div>
+            <div class="extra-3">
+                <iframe class="pagina3" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR7P63DahwSllV4fEn2v2BesLxPWC7MsYbtx0csNJe4eTdYpuME1SFmCtSH5SgCHA/pubhtml?gid=1390251757&single=true" allowfullscreen></iframe>
+                
+            </div>
+            
+        </div>
+        <div class="buttons">
+            <a href="#HOME" class="btn-1">INICIO</a>
+        </div>
+    </section>
+
+    <footer>
+        <nav>
+            <div class="style1">
+                <a href="https://www.facebook.com/LagosFacebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="style1">
+                <a href="https://www.instagram.com/lagosmusica/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="style1">
+                <a href="https://x.com/LagosMusica" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="style1">
+                <a href="https://www.youtube.com/@LagosMusica" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="style1">
+                <a href="https://www.tiktok.com/@lagosmusica" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </nav>
+        <a>2024 LAGOS, ®Todos los derechos reservados Jhonatan Hector Patzi.</a>
+    </footer>
+</div>
+
+</body>
+</html>
